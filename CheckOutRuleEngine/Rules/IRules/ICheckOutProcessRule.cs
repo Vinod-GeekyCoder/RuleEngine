@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CheckOutRuleEngine.Rules.IRules
 {
-    interface ICheckOutProcessRule
+    public interface ICheckOutProcessRule
     {
     }
 }

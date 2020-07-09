@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CheckOutRuleEngine.Rules
 {
-    class PromotionRule
+    public class PromotionRule : CheckOutProcessRule
     {
     }
 }
