@@ -26,7 +26,7 @@ namespace CheckOutRuleEngine.Rules
                             List<CartItems> itemsToRemove = new List<CartItems>();
                             foreach (var item in cartItems)
                             {
-                                var query = rule.Item.Where(r => r.ItemName == item.Item && Convert.ToInt32(r.Quantity) >= item.Quantity).FirstOrDefault();
+                                var query = rule.Item.Where(r => r.ItemName == item.Item && item.Quantity >= Convert.ToInt32(r.Quantity)).FirstOrDefault();
                                 if (query != null)
                                 {
                                     var cost = Convert.ToInt32(query.Quantity) == item.Quantity ? Convert.ToInt32(query.Price) : CalculateItemPrice(query, item);
@@ -36,7 +36,7 @@ namespace CheckOutRuleEngine.Rules
                             }
                             itemsToRemove.ForEach(i => tmpCart.Remove(i));
                         }
-                        if (rule.RuleName == "Combined")
+                        if (rule.RuleName == "Combined" && tmpCart.Count > 0)
                         {
                             foreach (var item in rule.Combo)
                             {
@@ -88,7 +88,7 @@ namespace CheckOutRuleEngine.Rules
             else
             {
                 var rem = item.Quantity % Convert.ToInt32(query.Quantity);
-                var price = (item.Quantity - rem) - Convert.ToInt32(query.Price);
+                var price = ((item.Quantity - rem)/ Convert.ToInt32(query.Quantity)) * Convert.ToInt32(query.Price);
                 price = price + (rem * item.Price);
                 return price;
             }

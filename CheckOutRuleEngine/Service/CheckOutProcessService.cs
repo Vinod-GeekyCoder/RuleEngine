@@ -11,10 +11,17 @@ namespace CheckOutRuleEngine.Service
     {
         public long ComputeTotal(List<Shared.Entities.CartItems> cartItems)
         {
-            var ruleInstance = RuleFactory.GetInstance(CheckOutProcessRuleType.PromotionRule);
-            var rules = ruleInstance.ExecuteRuleAsync();
-            var totalCost = ruleInstance.ComputeTotalAsync(cartItems, rules);
-            return totalCost;
+            try
+            {
+                var ruleInstance = RuleFactory.GetInstance(CheckOutProcessRuleType.PromotionRule);
+                var rules = ruleInstance.ExecuteRuleAsync();
+                var totalCost = ruleInstance.ComputeTotalAsync(cartItems, rules);
+                return totalCost;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }
