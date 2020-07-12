@@ -1,40 +1,43 @@
-[
-	{
-		"RuleType": "PromotionRule",
-		"Rules": [
-			{
-				"RuleName": "SingleProduct",
-				"Item": [
-					{
-						"ItemName": "A",
-						"Quantity": "3",
-						"Price": "130"
-					},
-					{
-						"ItemName": "B",
-						"Quantity": "2",
-						"Price": "45"
-					}
-				] 
-			},
-			{
-				"RuleName": "Combined",
-				"Combo": [
-					{
-						"Item": [
-							{
-								"ItemName": "C",
-								"Quantity": "1"
-							},
-							{
-								"ItemName": "D",
-								"Quantity": "1"
-							}
-						], 
-						"Price": "30"
-					}
-				]
-			}
-		]
-	}
-]
+{
+
+	"RuleTree": [
+		{
+			"RuleType": "PromotionRule",
+			"Rules": [
+				{
+					"RuleName": "SingleProduct",
+					"Item": [
+						{
+							"ItemName": "A",
+							"Quantity": "3",
+							"Price": "130"
+						},
+						{
+							"ItemName": "B",
+							"Quantity": "2",
+							"Price": "45"
+						}
+					]
+				},
+				{
+					"RuleName": "Combined",
+					"Combo": [
+						{
+							"ComboItem": [
+								{
+									"ItemName": "C",
+									"Quantity": "1"
+								},
+								{
+									"ItemName": "D",
+									"Quantity": "1"
+								}
+							],
+							"Price": "30"
+						}
+					]
+				}
+			]
+		}
+	]
+}
